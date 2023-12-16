@@ -1,13 +1,12 @@
-def is_prime(a):
+def is_prime(j):
     cnt = 0
-    for i in range(2,a):
-      
-        if a%i==0:
+    for i in range(2,j):
+        if j%i==0:
             cnt+=1
     if cnt==0:
         return True
-
-   
-for j in range(2,1001):
+    else: 
+        return False
+for j in range(2,10):
     if is_prime(j):
         print(j)
