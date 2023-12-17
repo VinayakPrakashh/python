@@ -7,7 +7,7 @@ def lcm(a, b):
     if multiple % a == 0 and multiple % b == 0:
       return multiple
     multiple += greater
-num1 = int(input("Enter the first number"))
-num2 = int(input("Enter the second number"))
+num1 = 16
+num2 = 8
 lcm_result = lcm(num1, num2)
 print(f"The LCM of {num1} and {num2} is: {lcm_result}")
