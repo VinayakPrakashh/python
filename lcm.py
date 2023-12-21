@@ -4,9 +4,9 @@ def lcm(a, b):
   multiple = greater
 
   while True:
-    if multiple % a == 0 and multiple % b == 0:
+    if multiple % a ==0 & multiple%b==0:
       return multiple
-    multiple += greater
+    multiple+=greater
 num1 = 16
 num2 = 8
 lcm_result = lcm(num1, num2)

@@ -1,30 +1,37 @@
-# Open a file and read its contents
-try:
-  with open("my_file.txt", "r") as f:
-    data = f.read()
-    print(data)
-except FileNotFoundError:
-  print("File not found!")
-except PermissionError:
-  print("You don't have permission to access the file.")
-else:
-  print("File read successfully!")
-finally:
-  print("Always executed, regardless of success or failure.")
+import matplotlib.pyplot as plt
+import numpy as np
 
-# Another example with multiple exceptions
-try:
-  number = int(input("Enter a number: "))
-  result = 10 / number
-except ValueError:
-  print("Please enter a valid number.")
-except ZeroDivisionError:
-  print("Division by zero is not allowed!")
-else:
-  print(f"The result is: {result}")
-try:
-  print("jj")
-except:
-  print("bbbbb")
-else:
-  print("no issues")
+# Define a function to plot and find local minima
+def plot_and_find_minima(func, x_min, x_max, num_points):
+  # Generate x-axis values
+  x = np.linspace(x_min, x_max, num_points)
+
+  # Calculate y-axis values
+  y = func(x)
+
+  # Plot the function
+  plt.plot(x, y)
+
+  # Find local minima
+  local_minima = []
+  for i in range(1, len(y) - 1):
+    if y[i-1]>y[i]and y[i]<y[i+1]:
+      local_minima.append(x[i])
+
+  # Print local minima
+  print("Local minima:", local_minima)
+
+  # Show the plot
+  plt.show()
+
+# Define the function to plot
+def f(x):
+  return x**3 - 3*x**2 + 2*x
+
+# Set plot parameters
+x_min = -2
+x_max = 4
+num_points = 100
+
+# Plot the function and find local minima
+plot_and_find_minima(f, x_min, x_max, num_points)

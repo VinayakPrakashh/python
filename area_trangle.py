@@ -1,8 +1,9 @@
-x = int(input("ENter a number"))
-def find_fact(x):
-    result = 1
-    for i in range(1,x+1):
-        result = result * i
-    return result
-factorial = find_fact(x)
-print(factorial)
+x =159
+sum = 0
+length = len(str(x))
+for digit in str(x):
+    sum=sum+(int(digit))**length
+if sum == x:
+    print("number is armstrong")
+else:
+    print("number is not armstrong")

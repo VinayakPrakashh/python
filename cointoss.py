@@ -26,4 +26,3 @@ print(test)
 result = coinToss(test)
 plot(test,result)
 show()
-a

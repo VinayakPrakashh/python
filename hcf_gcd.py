@@ -6,6 +6,5 @@ def hcf_loop(a, b):
   return hcf
 num1 = 16
 num2 = 8
-
 hcf_result = hcf_loop(num1, num2)
 print(f"The HCF of {num1} and {num2} is: {hcf_result}")
