@@ -12,3 +12,4 @@ while(N>n):
 
 plot(x,sum)
 show()
+
