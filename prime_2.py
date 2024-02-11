@@ -10,3 +10,4 @@ def is_prime(j):
 for j in range(2,10):
     if is_prime(j):
         print(j)
+        
