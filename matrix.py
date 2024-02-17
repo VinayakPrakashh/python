@@ -7,4 +7,3 @@ print(transpose(y))
 print(dot(m,y))
 print(linalg.eig(y))
 print(linalg.matrix_rank(y))
-

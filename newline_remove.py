@@ -1,12 +1,20 @@
-def remove_newlines(filename):
-    with open(filename, 'r') as input_file:
-        contents = input_file.read()
+from numpy import *
+from matplotlib.pyplot import *
 
-    contents_without_newlines = contents.replace('\n', '')
+ac = float(input("Enter the amplitude of carrier signal: "))
+fc = float(input("Enter the frequency of carrier signal: "))
+am = float(input("Enter the amplitude of message signal: "))
+fm = float(input("Enter the frequency of message signal: "))
+mi = float(input("Enter the modulation index: "))
+t = linspace(1,10,1000)
+carrier = ac*cos(2*pi*fc*t)
+message = am*cos(2*pi*fm*t)
+modulated = ac*(1+mi*cos(2*pi*fm*t))*cos(2*pi*fc*t)
+subplot(3,1,1)
+plot(t,carrier)
+subplot(3,1,2)
+plot(t,message)
 
-    with open(filename, 'w') as output_file:
-        output_file.write(contents_without_newlines)
-
-# Example usage
-filename = 'your_file.txt'  # Replace with the actual filename
-remove_newlines(filename)
+subplot(3,1,3)
+plot(t,modulated)
+show()

@@ -5,5 +5,5 @@ def hcf_loop(a, b):
         if a%i==0 and b%i == 0:
            hcf = i
     return hcf
-hcf = hcf_loop(3,7)
+hcf = hcf_loop(2,8)
 print(hcf)

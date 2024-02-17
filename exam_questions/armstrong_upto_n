@@ -1,0 +1,13 @@
+X = int(input("enter the limit"))
+def is_armstrong(x):
+    length  = len(str(x))
+    sum = 0
+    for digit in str(x):
+        sum = sum+ (int(digit)**length)
+    if x==sum:
+        return True
+    else:
+        return False
+for i in range(X):
+    if is_armstrong(i):
+        print(i)
