@@ -1,11 +1,10 @@
-def read_file_lines(filename):
-    lines = []
-    with open(filename, 'r') as file:
-        for line in file:
-            lines.append(line.strip())  # Remove trailing newline characters
-    return lines
+import numpy as np
+import matplotlib.pyplot as plt
 
-# Example usage
-filename = "factorial.py"  # Replace with the actual filename
-lines = read_file_lines(filename)
-print(lines)
+t=np.linspace(-3,3,1000)
+f=np.poly1d([3,0,0,0,5])
+fd1=f.deriv()
+fd2=fd1.deriv()
+plt.plot(t.f)
+plt.plot(t,fd1)
+plt.plot(t,fd2)
