@@ -4,9 +4,9 @@ intab = string.punctuation
 outtab = " "*len(intab)
 trantab = str.maketrans(intab,outtab)
 try:
-    f1 = open("D://prasoon.txt",'r')
+    f1 = open("dd",'r')
     for line in f1:
-        print(line.translate(trantab))
-    f1.close()
-except:
-    print("file does not excist")
+        print(s = line.translate(trantab))
+except KeyError:
+    
+

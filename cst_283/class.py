@@ -1,36 +1,36 @@
-# class Person:
-#     def __init__(self,name,age):
-#         self.name = name
-#         self.age = age
-# person1 = Person('alice',70)
-# print(person1.name)
-# print(person1.age)
+class Person:
+    def __init__(self,name,age):
+        self.name = name
+        self.age = age
+person1 = Person('alice',70)
+print(person1.name)
+print(person1.age)
 
-# class A:
-#     pass
+class A:
+    pass
 
-# class B(A):
-#     pass
+class B(A):
+    pass
 
-# print(issubclass(B, A))  # Output: True, B is a subclass of A
-# print(issubclass(A, B))  # Output: False, A is not a subclass of B
-# class animal:
-#     def __init__(self,name):
-#         self.name = name
-# class dog(animal):
-#     def speak(self):
-#         return f"{self.name} says Woof!"
-# class cow(animal):
-#     def speak(self):
-#         return f"{self.name} says bhaaa"
+print(issubclass(B, A))  # Output: True, B is a subclass of A
+print(issubclass(A, B))  # Output: False, A is not a subclass of B
+class animal:
+    def __init__(self,name):
+        self.name = name
+class dog(animal):
+    def speak(self):
+        return f"{self.name} says Woof!"
+class cow(animal):
+    def speak(self):
+        return f"{self.name} says bhaaa"
     
-# class cat(animal):
-#     def speak(self):
-#         return f"{self.name} says weow"
-# Dog =dog("arjun") 
-# Cat = cat("henna")
-# print(Dog.speak())
-# print(Cat.speak())
+class cat(animal):
+    def speak(self):
+        return f"{self.name} says weow"
+Dog =dog("arjun") 
+Cat = cat("henna")
+print(Dog.speak())
+print(Cat.speak())
 class Point:
     '''representing a point in xy plane'''
     def __init__(self,x=0,y=0): 
