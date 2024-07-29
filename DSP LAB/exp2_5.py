@@ -15,7 +15,7 @@ def dft_matrix(N):
 def compute_dft(sequence):
     N = len(sequence)
     VN = dft_matrix(N)
-    print(VN)
+    
   
 gammas = range(2, 11)
 dft_times = []
