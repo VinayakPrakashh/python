@@ -57,13 +57,22 @@ void bit_reverse(complex *x, int N) {
 }
 
 void dif_fft(complex *x, int N) {
-    for (int s = log2(N); s >= 1; s--) { // Outer loop: stages
+	int i=1;
+	int s=0;
+	while(i!=N){
+		i=i*2;
+		s+=1;
+	}
+
+    for (s; s >= 1; s--) { // Outer loop: stages
         int m = 1 << s; // m = 2^s
         int m2 = m >> 1; // m2 = m / 2
         complex w_m = twiddle_factor(m); // Twiddle factor for the current stage
-        for (int k = 0; k < N; k += m) { // Middle loop: groups
+        int k;
+        for (k = 0; k < N; k += m) { // Middle loop: groups
             complex w = {1.0, 0.0}; // Initialize w to 1
-            for (int j = 0; j < m2; j++) { // Inner loop: butterflies
+            int j;
+            for (j = 0; j < m2; j++) { // Inner loop: butterflies
                 complex u = x[k + j]; // First half
                 complex t = x[k + j + m2]; // Second half
                 x[k + j] = add(u, t); // Combine first and second half
@@ -75,13 +84,21 @@ void dif_fft(complex *x, int N) {
     bit_reverse(x, N); // Bit-reverse the output
 }
 void dif_ifft(complex *x, int N) {
-    for (int s = log2(N); s >= 1; s--) { // Outer loop: stages
+	int i=1;
+	int s=0;
+	while(i!=N){
+		i=i*2;
+		s+=1;
+	}
+    for (s; s >= 1; s--) { // Outer loop: stages
         int m = 1 << s; // m = 2^s
         int m2 = m >> 1; // m2 = m / 2
         complex w_m = twiddle_factor_2(m); // Twiddle factor for the current stage
-        for (int k = 0; k < N; k += m) { // Middle loop: groups
+        int k;
+        for (k = 0; k < N; k += m) { // Middle loop: groups
             complex w = {1.0, 0.0}; // Initialize w to 1
-            for (int j = 0; j < m2; j++) { // Inner loop: butterflies
+            int j;
+            for (j = 0; j < m2; j++) { // Inner loop: butterflies
                 complex u = x[k + j]; // First half
                 complex t = x[k + j + m2]; // Second half
                 x[k + j] = add(u, t); // Combine first and second half
@@ -91,7 +108,8 @@ void dif_ifft(complex *x, int N) {
         }
     }
     bit_reverse(x, N); // Bit-reverse the output
-    for (int i = 0; i < N; i++) {
+
+    for (i = 0; i < N; i++) {
             x[i].real /= N;
             x[i].imag /= N;
         }
@@ -102,9 +120,10 @@ int main() {
     // bit_reverse(x, N);
     dif_fft(x, N);
     dif_ifft(x, N);
-    for (int i = 0; i < N; i++) {
+    int i;
+    for (i = 0; i < N; i++) {
         print_complex(x[i]);
     }
-    
+
     return 0;
 }
