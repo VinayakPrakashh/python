@@ -39,7 +39,10 @@ complex twiddle_factor(int N) {
     complex w = {cos(2 * M_PI / N), -sin(2 * M_PI / N)};
     return w;
 }
-
+complex twiddle_factor_2(int N) {
+    complex w = {cos(2 * M_PI / N), sin(2 * M_PI / N)};
+    return w;
+}
 void bit_reverse(complex *x, int N) {
     int i, j, k;
     complex temp;
@@ -55,13 +58,22 @@ void bit_reverse(complex *x, int N) {
 
 void fft(complex *x, int N) {
     bit_reverse(x, N);
-    for (int s = 1; s <= log2(N); s++) {
+    int i=1;
+    	int S=0;
+    	while(i!=N){
+    		i=i*2;
+    		S+=1;
+    	}
+    	int s;
+    for (s = 1; s <= S; s++) {
         int m = 1 << s;
         int m2 = m >> 1;
         complex w_m = twiddle_factor(m);
-        for (int k = 0; k < N; k += m) {
+        int k;
+        for (k = 0; k < N; k += m) {
             complex w = {1.0, 0.0};
-            for (int j = 0; j < m2; j++) {
+            int j;
+            for (j = 0; j < m2; j++) {
                 complex t = mul(w, x[k + j + m2]);
                 complex u = x[k + j];
                 x[k + j] = add(u, t);
@@ -71,16 +83,30 @@ void fft(complex *x, int N) {
         }
     }
 }
+void ifft(complex *x, int N) {
+    bit_reverse(x, N);
+    int i=1;
+    	int S=0;
+    	while(i!=N){
+    		i=i*2;
+    		S+=1;
+    	}
+    	int s;
+    	int k;
+    for ( s = 1; s <= S; s++) {
+        int m = 1 << s;
+        int m2 = m >> 1;
+        complex w_m = twiddle_factor_2(m);
 
-int main() {
-    int N = 8;
-    complex x[8] = {{0.0, 0.0}, {1.0, 0.0}, {2.0, 0.0}, {3.0, 0.0}, {4.0, 0.0}, {5.0, 0.0}, {6.0, 0.0}, {7.0, 0.0}};
-    // bit_reverse(x, N);
-    fft(x, N);
-    
-    for (int i = 0; i < N; i++) {
-        print_complex(x[i]);
+        for (k = 0; k < N; k += m) {
+            complex w = {1.0, 0.0};
+            int j;
+            for (j = 0; j < m2; j++) {
+                complex t = mul(w, x[k + j + m2]);
+                complex u = x[k + j];
+                x[k + j] = add(u, t);
+                x[k + j + m2] = sub(u, t);
+                w = mul(w, w_m);
+            }
+        }
     }
-    
-    return 0;
-}
