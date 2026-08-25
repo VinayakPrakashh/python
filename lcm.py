@@ -1,4 +1,4 @@
-from numpy import *
++from numpy import *
 def lcm(a, b):
   higher = max(a,b)
   value = higher
